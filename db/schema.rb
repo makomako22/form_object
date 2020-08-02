@@ -16,8 +16,10 @@ ActiveRecord::Schema.define(version: 2020_08_02_084809) do
     t.string "nickname", null: false
     t.string "location", null: false
     t.string "hobby", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_information_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -28,4 +30,5 @@ ActiveRecord::Schema.define(version: 2020_08_02_084809) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "information", "users"
 end
