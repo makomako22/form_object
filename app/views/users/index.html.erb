@@ -8,6 +8,7 @@
       <th>ニックネーム</th>
       <th>出身地</th>
       <th>趣味</th>
+      <th>詳細</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= information.nickname %></td>
         <td><%= information.location %></td>
         <td><%= information.hobby %></td>
+        <td><%= link_to "詳細ページへ", user_path(information.user) %></td>
         <%# <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <%# <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
