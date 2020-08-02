@@ -9,17 +9,15 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /users/new
-  def new
-    # コードを記述する
-  end
+  def new;end
 
   # GET /users/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /users
   # POST /users.json
