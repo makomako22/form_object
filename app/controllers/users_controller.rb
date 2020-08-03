@@ -13,22 +13,39 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  def new;end
+  def new
+    @user = UserForm.new
+  end
 
   # GET /users/1/edit
-  # def edit
-  # end
+  def edit
+    @user_id = User.find(params[:id]).id
+    @user = UserForm.new(first_name: @user.first_name, last_name: @user.last_name, email: @user.email, nickname: @user.information.nickname, location: @user.information.location, hobby: @user.information.hobby)
+  end
 
   # POST /users
   # POST /users.json
   def create
-    # コードを記述する
+    @user = UserForm.new(user_params)
+    if @user.valid?
+      @user.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
-  # def update
-  # end
+  def update
+    @user = UserForm.new(user_params)
+    if @user.valid?
+      @user.update(params[:id])
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -45,6 +62,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email)
+      params.permit(:first_name, :last_name, :email, :nickname, :location, :hobby)
     end
 end
