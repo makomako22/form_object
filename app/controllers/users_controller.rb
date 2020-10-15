@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user_id = User.find(params[:id]).id
+    @user_id = params[:id]
     @user = UserForm.new(first_name: @user.first_name, last_name: @user.last_name, email: @user.email, nickname: @user.information.nickname, location: @user.information.location, hobby: @user.information.hobby)
   end
 
